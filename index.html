@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            margin: 0;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+
+        h1,h2,h3,h4,h5,h6{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .contenitore-card{
+            display:flex;   
+        }
+        .card{
+            height: 350px;
+            width: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            /* inserimetno della shadwo */
+            box-shadow: 2px 3px 2px rgb(72, 68, 68); 
+            margin:20px;
+            cursor: pointer;
+        }
+
+        .card > video{
+            position: absolute;
+            left: -200px;
+            height: 100%;
+        }
+        /* posizioniamo uno strato quasi trasparente sopra la card */
+        .overlay{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            color: white;
+            padding:20px;
+            align-items: flex-end;
+            background-color: rgb(0,0,0,0.25);
+            transition:all 0.5s ease;
+        }
+
+        .overlay:hover{
+            background-color: rgba(0,0,0,0);
+        }
+
+        .overlay > h3{
+            font-size: 20px;
+            text-shadow: 3px 2px 2px rgba(0,0,0,0.72);
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Card Animate</h1>
+   <div class="contenitore-card">
+        <div class="card">
+            <video src="./src/160820_146_NYC_StatueOfLiberty6_1080p_preview.mp4"muted class="video" loop playinline alt="Statua Della Libertà"></video>
+            <div class="overlay">
+                <h3>New York</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <video src="./src/Tour_Eiffel_and_Merrygoround_tilted_night_WS_tilt_20150610_Videvo_preview.mp4"muted class="video" loop playinline alt="Tour Eiffel"></video>
+            <div class="overlay">
+                <h3>Paris</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <video src="./src/170111_005_Tokyo_TokyoTower2_1080p_preview.mp4"muted class="video" loop playinline alt="Tokyo Tower"></video>
+            <div class="overlay">
+                <h3>Tokyo</h3>
+            </div>
+        </div>
+   </div>
+
+   <script>
+        const card = document.querySelectorAll(".card")
+        for(let i=0;i<card.length;i++){
+            card[i].addEventListener("mouseenter", e => {
+                const video = card[i].children[0]
+                video.play()
+            })
+            card[i].addEventListener("mouseleave", e => {
+                const video = card[i].children[0]
+                video.pause()
+            })
+        }
+
+   </script>
+</body>
+</html>
